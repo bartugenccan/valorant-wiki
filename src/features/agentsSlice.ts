@@ -30,7 +30,6 @@ export const fetchSelectedAgent = createAsyncThunk(
   async (id: string): Promise<Agent> => {
     const response = await fetch(`https://valorant-api.com/v1/agents/${id}`);
     const data = await response.json();
-    console.log(data.data);
     return data.data;
   }
 );
@@ -47,7 +46,6 @@ export const agentsSlice = createSlice({
     builder.addCase(fetchAgents.fulfilled, (state, action) => {
       state.loading = false;
       state.data = [...state.data, ...action.payload];
-      console.log(state.data);
     });
     builder.addCase(fetchAgents.rejected, (state, action) => {
       state.loading = false;
