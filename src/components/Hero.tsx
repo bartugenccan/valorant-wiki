@@ -60,6 +60,7 @@ const Hero = () => {
           agents.map((agent) => {
             return (
               <SingleAgent
+                id={agent.uuid}
                 key={agent.uuid}
                 name={agent?.displayName}
                 role={agent?.role?.displayName}

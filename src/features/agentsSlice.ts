@@ -6,12 +6,14 @@ interface AgentsState {
   loading: boolean;
   error: string | undefined;
   data: Agent[];
+  singleAgent: Agent | undefined;
 }
 
 const initialState: AgentsState = {
   loading: false,
   error: "",
   data: [],
+  singleAgent: undefined,
 };
 
 export const fetchAgents = createAsyncThunk(
@@ -19,6 +21,16 @@ export const fetchAgents = createAsyncThunk(
   async (): Promise<Agent[]> => {
     const response = await fetch("https://valorant-api.com/v1/agents");
     const data = await response.json();
+    return data.data;
+  }
+);
+
+export const fetchSelectedAgent = createAsyncThunk(
+  "agents/fetchSelectedAgent",
+  async (id: string): Promise<Agent> => {
+    const response = await fetch(`https://valorant-api.com/v1/agents/${id}`);
+    const data = await response.json();
+    console.log(data.data);
     return data.data;
   }
 );
@@ -41,6 +53,19 @@ export const agentsSlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
       state.data = [];
+    });
+    builder.addCase(fetchSelectedAgent.pending, (state, action) => {
+      state.loading = true;
+      state.singleAgent = undefined;
+    });
+    builder.addCase(fetchSelectedAgent.fulfilled, (state, action) => {
+      state.loading = false;
+      state.singleAgent = action.payload;
+    });
+    builder.addCase(fetchSelectedAgent.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message;
+      state.singleAgent = undefined;
     });
   },
 });

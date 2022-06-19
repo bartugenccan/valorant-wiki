@@ -10,6 +10,7 @@ import { store } from "./store/store";
 // components
 import Header from "./components/Header";
 import Weapons from "./pages/Weapons";
+import AgentDetail from "./pages/AgentDetail";
 
 // router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -24,6 +25,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/weapons" element={<Weapons />} />
+        <Route path="/agents/:id" element={<AgentDetail />} />
       </Routes>
     </BrowserRouter>
   </Provider>

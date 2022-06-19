@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("http://fonts.cdnfonts.com/css/valorant");
+
+@layer base {
+  #header {
+    @apply font-[valorant];
+  }
+
+  li {
+    @apply py-4 md:w-[120px] w-[70px] text-center mx-5 mt-8 md:mt-0 font-bold cursor-pointer bg-white border-2 text-black rounded-md md:text-xl text-sm;
+  }
+}
