@@ -1,11 +1,11 @@
 import React from "react";
 
-interface SingleWeaponProps {
+interface SingleMapProps {
   name: string;
   image: string;
 }
 
-const SingleWeapon: React.FC<SingleWeaponProps> = ({ name, image }) => {
+const SingleMap: React.FC<SingleMapProps> = ({ image, name }) => {
   return (
     <div className="bg-white shadow-lg shadow-black rounded-xl flex flex-col justify-around items-center p-8">
       <h1 className="p-4 font-bold text-center text-2xl">{name}</h1>
@@ -18,4 +18,4 @@ const SingleWeapon: React.FC<SingleWeaponProps> = ({ name, image }) => {
   );
 };
 
-export default SingleWeapon;
+export default SingleMap;

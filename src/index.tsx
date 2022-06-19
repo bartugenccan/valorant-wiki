@@ -11,6 +11,7 @@ import { store } from "./store/store";
 import Header from "./components/Header";
 import Weapons from "./pages/Weapons";
 import AgentDetail from "./pages/AgentDetail";
+import Maps from "./pages/Maps";
 
 // router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -26,6 +27,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/weapons" element={<Weapons />} />
         <Route path="/agents/:id" element={<AgentDetail />} />
+        <Route path="/maps" element={<Maps />} />
       </Routes>
     </BrowserRouter>
   </Provider>

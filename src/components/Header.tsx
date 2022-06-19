@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import valorant from "../assets/valorant.png";
 
@@ -10,24 +10,34 @@ const Header = () => {
   const [isWeaponsActive, setIsWeaponsActive] = useState<boolean>(false);
   const [isMapsActive, setIsMapsActive] = useState<boolean>(false);
 
+  const navigate = useNavigate();
+
   const handleActiveAgents = () => {
     setIsAgentsActive(true);
     setIsWeaponsActive(false);
     setIsMapsActive(false);
+    setNavOpen(false);
   };
   const handleActiveWeapons = () => {
     setIsWeaponsActive(true);
     setIsAgentsActive(false);
     setIsMapsActive(false);
+    setNavOpen(false);
   };
   const handleActiveMaps = () => {
     setIsMapsActive(true);
     setIsAgentsActive(false);
     setIsWeaponsActive(false);
+    setNavOpen(false);
   };
 
   const handleNav = () => {
     setNavOpen(!navOpen);
+  };
+
+  const handleHeaderClick = () => {
+    navigate("/");
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -37,7 +47,7 @@ const Header = () => {
   return (
     <div className="w-full h-[90px] shadow-2xl border-b-4">
       <div className="max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full ">
-        <Link to="/">
+        <Link to={"/"} onClick={handleHeaderClick}>
           <div className="flex justify-between items-center cursor-pointer">
             <img
               src={valorant}
@@ -86,14 +96,35 @@ const Header = () => {
         <div
           className={
             navOpen
-              ? "w-full bg-black text-white absolute top-[90px] left-0 flex justify-center text-center"
+              ? "w-full bg-white text-white absolute top-[90px] left-0 flex justify-center text-center shadow-xl rounded-xl p-4"
               : "absolute left-[-100%]"
           }
         >
           <ul>
-            <li>Agents</li>
-            <li>Weapons</li>
-            <li>Maps</li>
+            <Link to="/">
+              <li
+                className={isAgentsActive ? "bg-red-500 text-white" : ""}
+                onClick={handleActiveAgents}
+              >
+                Agents
+              </li>
+            </Link>
+            <Link to="/weapons">
+              <li
+                className={isWeaponsActive ? "bg-red-500 text-white" : ""}
+                onClick={handleActiveWeapons}
+              >
+                Weapons
+              </li>
+            </Link>
+            <Link to="/maps">
+              <li
+                className={isMapsActive ? "bg-red-500 text-white" : ""}
+                onClick={handleActiveMaps}
+              >
+                Maps
+              </li>
+            </Link>
           </ul>
         </div>
       </div>

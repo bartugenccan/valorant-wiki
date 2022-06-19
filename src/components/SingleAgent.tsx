@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 interface SingleAgentProps {
@@ -7,6 +7,7 @@ interface SingleAgentProps {
   image: string;
   roleIcon: string;
   id: string;
+  sova: boolean;
 }
 
 const SingleAgent: React.FC<SingleAgentProps> = ({
@@ -15,6 +16,7 @@ const SingleAgent: React.FC<SingleAgentProps> = ({
   role,
   image,
   roleIcon,
+  sova,
 }) => {
   return (
     <Link to={`/agents/${id}`}>

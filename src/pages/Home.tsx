@@ -8,6 +8,7 @@ import { fetchAgents } from "../features/agentsSlice";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 
 const Home = () => {
+  const [initFilter, setInitFilter] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
