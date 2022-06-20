@@ -7,7 +7,7 @@
 <p><font size="3">
   This is an app that shows users details about Valorant Agents, weapons and maps.
   <br><br> 
-  <strong><em>Here is the live version:</em></strong>https://typing-speed-4un.pages.dev/
+  <strong><em>Here is the live version:</em></strong>https://valorant-wiki.pages.dev/
 </p>
 <h2>
   Flow :ocean:
