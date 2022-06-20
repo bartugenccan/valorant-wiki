@@ -51,10 +51,17 @@ const AgentDetail = () => {
           <div
             className="w-full md:grid grid-cols-3 p-4 rounded-2xl"
             style={{
-              background: `linear-gradient(#${singleAgent?.backgroundGradientColors[0].slice(
-                0,
-                -2
-              )}, #${singleAgent?.backgroundGradientColors[1].slice(0, -2)})`,
+              background: `${
+                singleAgent?.backgroundGradientColors
+                  ? `linear-gradient(#${singleAgent?.backgroundGradientColors[0].slice(
+                      0,
+                      -2
+                    )}, #${singleAgent?.backgroundGradientColors[1].slice(
+                      0,
+                      -2
+                    )})`
+                  : "linear-gradient(#517cac, #512bad)"
+              }`,
             }}
           >
             <img src={singleAgent?.fullPortraitV2} alt="roleIcon" />

@@ -48,6 +48,7 @@ export const agentsSlice = createSlice({
     builder.addCase(fetchAgents.fulfilled, (state, action) => {
       state.loading = false;
       state.data = [...state.data, ...action.payload];
+      console.log(state.data);
     });
     builder.addCase(fetchAgents.rejected, (state, action) => {
       state.loading = false;
